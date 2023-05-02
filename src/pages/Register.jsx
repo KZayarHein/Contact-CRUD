@@ -26,13 +26,19 @@ const Register = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const { data } = await register(values);
-      // console.log(data);
-      data?.success && navigate("/login");
+      const { error, data } = await register(values);
+      // console.log(error?.data?.message);
+      if (error?.data?.message) {
+        alert(
+          "This email address is already in use. Please use a different email address."
+        );
+      } else {
+        data?.success && navigate("/login");
+      }
     },
   });
 
-  const {handleSubmit,getFieldProps,touched,errors} = formik;
+  const { handleSubmit, getFieldProps, touched, errors } = formik;
   return (
     <>
       <div className="flex h-screen justify-center items-center">
@@ -61,9 +67,7 @@ const Register = () => {
                     className="block w-full rounded-md shadow-sm text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-2 focus:ring-blue-500 outline-none py-2 px-3"
                   />
                   {touched.name && errors.name ? (
-                    <div className=" text-sm text-red-500">
-                      {errors.name}
-                    </div>
+                    <div className=" text-sm text-red-500">{errors.name}</div>
                   ) : null}
                   {/* <ErrorMessage name="name"/> */}
                 </div>
@@ -85,9 +89,7 @@ const Register = () => {
                     className="block w-full rounded-md shadow-sm text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-2 focus:ring-blue-500 outline-none py-2 px-3"
                   />
                   {touched.email && errors.email ? (
-                    <div className=" text-sm text-red-500">
-                      {errors.email}
-                    </div>
+                    <div className=" text-sm text-red-500">{errors.email}</div>
                   ) : null}
                   {/* <ErrorMessage name="email"/> */}
                 </div>
