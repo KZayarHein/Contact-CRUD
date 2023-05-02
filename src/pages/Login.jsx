@@ -18,7 +18,7 @@ const Login = () => {
   const [login, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
   const formik = useFormik({
-    initialValues: { email: "bob2@gmail.com", password: "asdfghjkl" },
+    initialValues: { email: "", password: "" },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       const { data } = await login(values);
