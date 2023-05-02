@@ -13,6 +13,7 @@
         visibility: hidden;
     }
 
+    
 
     tr:hover .icon {
         visibility: visible;

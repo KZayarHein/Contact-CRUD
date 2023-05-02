@@ -27,7 +27,7 @@ const ContactTable = () => {
       </thead>
       <tbody>
         {contacts?.map((contact) => (
-          <tr key={contact?.id}>
+          <tr key={contact?.id} className=" hover:bg-gray-200">
             <td className="border-b font-medium leading-5 pl-4 pr-3 border-b-gray-300 text-start py-4 whitespace-nowrap">{contact?.name}</td>
             <td className="border-b leading-5 py-4 px-3 border-b-gray-300 text-start">{contact?.email}</td>
             <td className="border-b leading-5 py-4 px-3 border-b-gray-300 text-start ">{contact?.phone}</td>
